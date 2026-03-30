@@ -8,7 +8,7 @@ class Settings(BaseSettings):
     ALLOWED_ORIGINS: str = "http://localhost:5173,http://localhost:3000"
 
     # Database
-    DATABASE_URL: str = "mysql+pymysql://user:password@localhost:3306/mentorme"
+    DATABASE_URL: str = "postgresql://postgres:[YOUR-PASSWORD]@db.tplmacjpmabvokekdizt.supabase.co:5432/postgres"
 
     # Supabase
     SUPABASE_URL: str = ""
