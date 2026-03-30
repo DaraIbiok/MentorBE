@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MentorMe – System Architecture Diagram</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: Calibri, 'Segoe UI', Arial, sans-serif;
+    background: #ffffff;
+    padding: 14px 14px;
+    font-size: 9px;
+    color: #000;
+  }
+
+  .page { max-width: 860px; margin: 0 auto; }
+
+  .sec-title {
+    font-weight: 700;
+    font-size: 9.5px;
+    text-align: center;
+    margin-bottom: 1px;
+    letter-spacing: 0.02em;
+  }
+  .sec-sub {
+    font-size: 8px;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+
+  .card {
+    border: 1px solid #000;
+    padding: 4px 6px;
+    margin-bottom: 4px;
+  }
+  .card:last-child { margin-bottom: 0; }
+
+  .card-title {
+    font-weight: 700;
+    font-size: 9px;
+    margin-bottom: 2px;
+  }
+  .card-sub { font-weight: 400; font-size: 8px; }
+
+  ul {
+    list-style: disc;
+    padding-left: 11px;
+    line-height: 1.6;
+  }
+  ul li { font-size: 8.5px; }
+
+  /* TOP ROW */
+  .top-row {
+    display: grid;
+    grid-template-columns: 1fr 1.65fr 1fr;
+    border: 1px solid #000;
+  }
+
+  .col { padding: 7px; }
+  .col-left  { border-right: 1px solid #000; }
+  .col-right { border-left:  1px solid #000; }
+
+  .app-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+  .app-split .card { margin-bottom: 0; }
+
+  .rest-lists {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+  }
+
+  .staff-lists {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* FORK SVG */
+  .fork-svg {
+    display: block;
+    width: 100%;
+    height: 40px;
+  }
+
+  /* BOTTOM ROW */
+  .bottom-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .bot-box {
+    border: 1px solid #000;
+    padding: 7px;
+  }
+
+  .bot-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    margin-top: 4px;
+  }
+  .bot-inner .card { margin-bottom: 0; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- TOP ROW -->
+  <div class="top-row">
+
+    <!-- PRESENTATION LAYER -->
+    <div class="col col-left">
+      <div class="sec-title">PRESENTATION LAYER</div>
+      <div class="sec-sub">(React.js + TypeScript + Tailwind CSS)</div>
+
+      <div class="card">
+        <div class="card-title">Mentee Web App<br><span class="card-sub">(React.js / TypeScript)</span></div>
+        <ul>
+          <li>Browse &amp; Discover Mentors</li>
+          <li>Send Mentorship Requests</li>
+          <li>Session Booking &amp; Joining</li>
+          <li>Goal &amp; Progress Tracking</li>
+          <li>In-App Notifications</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Mentor Web Dashboard<br><span class="card-sub">(React.js / TypeScript)</span></div>
+        <div class="staff-lists">
+          <ul>
+            <li>Manage Requests</li>
+            <li>Schedule Sessions</li>
+            <li>View Active Mentees</li>
+            <li>Profile Management</li>
+          </ul>
+          <ul>
+            <li>Session History</li>
+            <li>Receive Ratings</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:0">
+        <div class="card-title">Admin Web Dashboard<br><span class="card-sub">(React.js / TypeScript)</span></div>
+        <ul>
+          <li>User Management</li>
+          <li>Mentor Verification</li>
+          <li>Platform Analytics</li>
+          <li>Session Oversight</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- APPLICATION LAYER -->
+    <div class="col">
+      <div class="sec-title">APPLICATION LAYER</div>
+      <div class="sec-sub">(FastAPI / Python + SQLAlchemy ORM)</div>
+
+      <div class="app-split">
+        <div class="card">
+          <div class="card-title">Auth &amp; Security</div>
+          <ul>
+            <li>Supabase Authentication</li>
+            <li>JWT Token Validation</li>
+            <li>Role-Based Access Control</li>
+            <li>HTTPS / Encryption</li>
+            <li>Session Management</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Business Logic</div>
+          <ul>
+            <li>Skill-Overlap Matching</li>
+            <li>Mentor Verification Flow</li>
+            <li>Request Processing</li>
+            <li>Session Scheduling</li>
+            <li>Feedback &amp; Rating Engine</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:0">
+        <div class="card-title">RESTful API &amp; Real-Time Services</div>
+        <div class="rest-lists">
+          <ul>
+            <li>RESTful API Endpoints</li>
+            <li>Mentor Matching API</li>
+            <li>Session Management API</li>
+            <li>Notification Endpoints</li>
+            <li>Profile &amp; Goals API</li>
+          </ul>
+          <ul>
+            <li>CORS Configuration</li>
+            <li>Supabase Realtime (Chat)</li>
+            <li>Daily.co Video API</li>
+            <li>Admin Analytics Endpoints</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- DATA LAYER -->
+    <div class="col col-right">
+      <div class="sec-title">DATA LAYER</div>
+      <div class="sec-sub">(Firebase / PostgreSQL + SQLAlchemy)</div>
+
+      <div class="card">
+        <div class="card-title">Core Database Collections</div>
+        <ul>
+          <li>Users (Mentors &amp; Mentees)</li>
+          <li>Mentorship Requests</li>
+          <li>Sessions (Status &amp; Records)</li>
+          <li>Feedback &amp; Ratings</li>
+          <li>Goals &amp; Progress Logs</li>
+        </ul>
+      </div>
+
+      <div class="card" style="margin-bottom:0">
+        <div class="card-title">Data Services</div>
+        <ul>
+          <li>Supabase Realtime Sync</li>
+          <li>Cloud Backup &amp; Replication</li>
+          <li>Database Indexing</li>
+          <li>Skill &amp; Interest Profiles</li>
+          <li>Notification Log (DB)</li>
+        </ul>
+      </div>
+    </div>
+
+  </div><!-- /top-row -->
+
+  <!-- FORK CONNECTOR -->
+  <svg class="fork-svg" viewBox="0 0 860 40" xmlns="http://www.w3.org/2000/svg">
+    <line x1="430" y1="0" x2="430" y2="20" stroke="#000" stroke-width="1.5"/>
+    <line x1="210" y1="20" x2="650" y2="20" stroke="#000" stroke-width="1.5"/>
+    <line x1="210" y1="20" x2="210" y2="31" stroke="#000" stroke-width="1.5"/>
+    <line x1="650" y1="20" x2="650" y2="31" stroke="#000" stroke-width="1.5"/>
+    <polygon points="204,31 216,31 210,40" fill="#000"/>
+    <polygon points="644,31 656,31 650,40" fill="#000"/>
+  </svg>
+
+  <!-- BOTTOM ROW -->
+  <div class="bottom-row">
+
+    <!-- AI / MATCHING MODULE -->
+    <div class="bot-box">
+      <div class="sec-title">MATCHING MODULE</div>
+      <div class="sec-sub">(Python · Scikit-learn · FastAPI)</div>
+      <div class="bot-inner">
+        <div class="card">
+          <div class="card-title">Skill-Overlap Algorithm</div>
+          <ul>
+            <li>Mentee Interest Analysis</li>
+            <li>Mentor Expertise Scoring</li>
+            <li>Compatibility Score Calc.</li>
+            <li>Descending Rank Sorting</li>
+            <li>Rating-Based Tiebreaker</li>
+            <li>"Recommended" Badge Logic</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Recommendation Engine</div>
+          <ul>
+            <li>Content-Based Filtering</li>
+            <li>Goal &amp; Interest Mapping</li>
+            <li>Mentor Profile Matching</li>
+            <li>REST API (FastAPI)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMMUNICATION & NOTIFICATION -->
+    <div class="bot-box">
+      <div class="sec-title">COMMUNICATION &amp; NOTIFICATION SYSTEM</div>
+      <div class="sec-sub">(Daily.co · Supabase Realtime · Multi-Channel Delivery)</div>
+      <div class="bot-inner">
+        <div class="card">
+          <div class="card-title">Video &amp; Chat</div>
+          <ul>
+            <li>Daily.co Video Call (iframe)</li>
+            <li>Real-Time Audio &amp; Video</li>
+            <li>In-Session Chat Panel</li>
+            <li>Supabase Realtime Messages</li>
+            <li>Session Room Access Control</li>
+            <li>Reschedule &amp; Cancel Flow</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">In-App Notifications</div>
+          <ul>
+            <li>Request Submission Alerts</li>
+            <li>Acceptance / Rejection Notices</li>
+            <li>Session Scheduling Events</li>
+            <li>Mentor Approval Alerts</li>
+            <li>Notification Log (DB)</li>
+            <li>Mark Read / Delete Actions</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /bottom-row -->
+
+</div><!-- /page -->
+</body>
+</html>
