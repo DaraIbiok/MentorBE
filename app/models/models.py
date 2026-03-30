@@ -43,14 +43,14 @@ class User(Base):
     supabase_id = Column(String(64), unique=True, nullable=False, index=True)
     email = Column(String(255), unique=True, nullable=False, index=True)
     name = Column(String(255), nullable=False)
-    role = Column(Enum("mentee", "mentor", "admin"), nullable=False, default="mentee")
+    role = Column(Enum("mentee", "mentor", "admin", name="user_role_enum"), nullable=False, default="mentee")
     avatar_url = Column(String(512), nullable=True)
     bio = Column(Text, nullable=True)
     gender = Column(String(50), nullable=True)
     skills = Column(Text, nullable=True)
     goals = Column(Text, nullable=True)
     is_active = Column(Boolean, default=True)
-    verification_status = Column(Enum("not_required", "pending", "approved", "rejected"), nullable=False, default="not_required")
+    verification_status = Column(Enum("not_required", "pending", "approved", "rejected", name="verification_status_enum"), nullable=False, default="not_required")
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
@@ -74,7 +74,7 @@ class MentorshipRequest(Base):
     topic = Column(String(255), nullable=False)
     message = Column(Text, nullable=True)
     preferred_time = Column(DateTime, nullable=True)
-    status = Column(Enum("pending", "accepted", "declined"), default="pending", nullable=False)
+    status = Column(Enum("pending", "accepted", "declined", name="request_status_enum"), default="pending", nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
@@ -94,7 +94,7 @@ class Session(Base):
     scheduled_at = Column(DateTime, nullable=False)
     duration_minutes = Column(Integer, default=60)
     status = Column(
-        Enum("scheduled", "in_progress", "completed", "cancelled"),
+        Enum("scheduled", "in_progress", "completed", "cancelled", name="session_status_enum"),
         default="scheduled",
         nullable=False,
     )
@@ -153,7 +153,7 @@ class Notification(Base):
     id = Column(String(36), primary_key=True, default=_uuid)
     user_id = Column(String(36), ForeignKey("users.id"), nullable=False)
     type = Column(
-        Enum("message", "session", "request", "system"),
+        Enum("message", "session", "request", "system", name="notification_type_enum"),
         nullable=False,
         default="system",
     )
@@ -198,7 +198,7 @@ class MentorApplication(Base):
     # Step 4: Review and Submit
     submitted_at = Column(DateTime, nullable=True)
     status = Column(
-        Enum("draft", "step_1", "step_2", "step_3", "review", "submitted", "approved", "rejected"),
+        Enum("draft", "step_1", "step_2", "step_3", "review", "submitted", "approved", "rejected", name="application_status_enum"),
         default="draft",
         nullable=False
     )
